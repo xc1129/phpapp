@@ -9,5 +9,5 @@ $data=array(
 );
 
 //Response::show(200,'successfully',$data,'json');
-Response::show(200,'successfully',$data,'xml');
+Response::show(200,'successfully',$data);
 ?>
