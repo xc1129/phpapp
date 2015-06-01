@@ -23,6 +23,7 @@ class Response {
     }
 
     public static function xml(){
+        header("Content-Type:text/xml");
         $xml="<?xml version='1.0' encoding='UTF-8'?>\n";
         $xml.="<root>\n";
         $xml.="<code>200</code>\n";
