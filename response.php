@@ -34,13 +34,61 @@ class Response {
         $xml.="</data>\n";
         $xml.="</root>\n";
 
-        echo $xml;
-
+        echo $xml; 
     } 
+    /**
+     * output data by xml way
+     *
+     *
+     *
+     */
+    public static function xmlEncode($code,$message,$data=array())
+    {
+        if(!is_numeric($code))
+        {
+            return '';
+        }
+
+        $result=array(
+            'code'=>$code,
+            'message'=>$message,
+            'data'=>$data,
+        );
+        header("Content-Type:text/xml");
+        $xml="<?xml version='1.0' encoding='UTF-8'?>";
+        $xml.="<root>";
+        $xml.=self::xmlToEncode($result);
+        $xml.="</root>";
+        
+        echo $xml;
+    }
+
+    public static function xmlToEncode($data)
+    {
+        $xml="";
+        $arrt="";
+        foreach($data as $key=>$value)
+        {
+            if(is_numeric($key))
+            {
+                $attr=" id='{$key}'";
+                $key="item";
+            }
+            $xml.="<{$key}{$attr}>";
+            $xml.=is_array($value) ? self::xmlToEncode($value): $value;
+            $xml.="</{$key}>\n";
+        }
+        return $xml;
+    }
 }
 
-
-Response::xml();
+$data=array(
+    'id'=>1,
+    'name'=>'test',
+    'type'=>array(4,5,6),
+    'test'=>array(1,123,56=>array(7,8,9))
+);
+Response::xmlEncode(200,'successfully',$data);
 ?>
 
 
