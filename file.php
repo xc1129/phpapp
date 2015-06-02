@@ -13,8 +13,13 @@ class File
     {
         $filename=$this->_dir.$path.$key.self::EXT;
 
-        if($value!='')
+        if($value!=='')
         {
+            if(is_null($value))
+            {
+                echo "delete file";
+                return @unlink($filename);
+            }
             $dir=dirname($filename);
             if(!is_dir($dir))
             {
@@ -30,11 +35,6 @@ class File
         else
         {
             $dataStr=file_get_contents($filename);
-            /*if(preg_match('^\xEF\xBB\xBF/',$datasTR))
-            {
-                $dataStr=substr($dataStr,3);
-            }
-            $dataStr=t($dataStr);*/
             return json_decode($dataStr,true);
         }
     }

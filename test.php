@@ -12,10 +12,8 @@ $data=array(
 //Response::show(200,'successfully',$data);
 
 $file=new File();
-if($file->cacheData('index_test_cache'))
+if($file->cacheData('index_test_cache',null))
 {
-    var_dump($file->cacheData('index_test_cache'));
-    exit;
     echo 'success';
 }
 else
