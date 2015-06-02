@@ -1,6 +1,6 @@
 <?php
-require_once('./response.php');
-
+//require_once('./response.php');
+require_once('./file.php');
 $data=array(
     'id'=>1,
     'name'=>'test',
@@ -9,5 +9,16 @@ $data=array(
 );
 
 //Response::show(200,'successfully',$data,'json');
-Response::show(200,'successfully',$data);
+//Response::show(200,'successfully',$data);
+
+$file=new File();
+if($file->cacheData('index_test_cache',$data))
+{
+    echo 'success';
+}
+else
+{
+    echo 'error';
+}
+
 ?>
