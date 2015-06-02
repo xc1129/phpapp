@@ -22,6 +22,22 @@ class File
             }
             return file_put_contents($filename,json_encode($value));
         }
+
+        if(!is_file($filename))
+        {
+           return FALSE;
+        }
+        else
+        {
+            $dataStr=file_get_contents($filename);
+            /*if(preg_match('^\xEF\xBB\xBF/',$datasTR))
+            {
+                $dataStr=substr($dataStr,3);
+            }
+            $dataStr=t($dataStr);*/
+            return json_decode($dataStr,true);
+        }
     }
+
 }
 ?>
