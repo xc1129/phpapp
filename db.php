@@ -6,7 +6,7 @@ class Db{
     private $_dbConfig=array(
         'host'=>'localhost:3306',
         'user'=>'test',
-        'password'=>'',
+        'password'=>'123456',
         'database'=>'test'
     );
     static private $_connectSource;
