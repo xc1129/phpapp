@@ -38,8 +38,13 @@ class File
         {
             $contents=file_get_contents($filename);
             $cacheTime=(int)substr($contents,0,11);
-            echo $cacheTime;exit;
-            return json_decode(file_get_contents($filename),true);
+            $value=substr($contents,11);
+            if($cacheTime!=0 && $cacheTime + filemtime($filename)<time())
+            {
+                unlink($filename);
+                return FALSE;
+            }
+            return json_decode($value,true);
         }
     }
 
