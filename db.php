@@ -33,7 +33,8 @@ class Db{
         
             if(!self::$_connectSource)
             {
-                die('mysql connect error'.mysql_error());
+                throw new Exception('mysql connect error '.mysql_error());
+                //die('mysql connect error'.mysql_error());
             }
 
             mysql_select_db($this->_dbConfig['database'],self::$_connectSource);
