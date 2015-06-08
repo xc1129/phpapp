@@ -36,13 +36,15 @@ class File
         }
         else
         {
-            $dataStr=file_get_contents($filename);
-            return json_decode($dataStr,true);
+            $contents=file_get_contents($filename);
+            $cacheTime=(int)substr($contents,0,11);
+            echo $cacheTime;exit;
+            return json_decode(file_get_contents($filename),true);
         }
     }
 
 }
 
 $file=new File();
-$file->cacheData('test1','fjlakejl2123',180);
+$file->cacheData('test1');
 ?>
