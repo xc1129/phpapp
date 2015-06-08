@@ -38,7 +38,7 @@ if(!$items=$cache->cacheData('index_test_cache'.$page.'-'.$pageSize))
 
     if($items)
     {
-        $cache->cacheData('index_test_cache'.$page.'-'.$pageSize,$items,1200);
+        $cache->cacheData('index_test_cache'.$page.'-'.$pageSize,$items,600);
     }
 }
 
