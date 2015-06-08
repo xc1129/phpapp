@@ -9,9 +9,9 @@ class File
         $this->_dir=dirname(__FILE__).'/files/';
     }
 
-    public function cacheData($key,$value='',$path='')
+    public function cacheData($key,$value='',$cacheTime=0)
     {
-        $filename=$this->_dir.$path.$key.self::EXT;
+        $filename=$this->_dir.$key.self::EXT;
 
         if($value!=='')
         {
@@ -25,7 +25,9 @@ class File
             {
                 mkdir($dir,0777);
             }
-            return file_put_contents($filename,json_encode($value));
+
+            $cacheTime= sprintf('%011d',$cacheTime);
+            return file_put_contents($filename,$cacheTime.json_encode($value));
         }
 
         if(!is_file($filename))
@@ -40,4 +42,7 @@ class File
     }
 
 }
+
+$file=new File();
+$file->cacheData('test1','fjlakejl2123',180);
 ?>
