@@ -131,7 +131,7 @@ class Response {
     'test'=>array(1,123,56=>array(7,8,9))
 );
 Response::xmlEncode(200,'successfully',$data);
- *
+ */
 ?>
 
 
