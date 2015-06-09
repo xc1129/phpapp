@@ -121,17 +121,4 @@ class Response {
 
 }
 
-
-
-/*
-     $data=array(
-    'id'=>1,
-    'name'=>'test',
-    'type'=>array(4,5,6),
-    'test'=>array(1,123,56=>array(7,8,9))
-);
-Response::xmlEncode(200,'successfully',$data);
- */
 ?>
-
-
