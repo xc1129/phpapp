@@ -51,3 +51,4 @@ else
     return Response::show(400,'data access failed',$items);
 }
 var_dump($items);
+?>
