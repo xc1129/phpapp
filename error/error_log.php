@@ -7,4 +7,6 @@ error_reporting(-1);
 echo $test;
 settype($var,'king');
 test();
+
+
 ?>
