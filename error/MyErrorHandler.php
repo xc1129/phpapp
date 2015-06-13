@@ -45,7 +45,7 @@ class MyErrorHandler
         $errorMsg="error\n file ".$this->filename."\n message ".$this->message."\n line ".$this->line."\n infor ".$backtrace."\n";
         ini_set('error_log','./error_log.log');
         echo $errorMsg;
-        //error_log($errorMsg);
+        error_log($errorMsg,3,$this->_noticeLog);
         exit(1);
     }
 
