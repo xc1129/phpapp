@@ -6,6 +6,7 @@ class MyErrorHandler
     public $filename='';
     public $line=0;
     public $vars=array();
+    protected $_noticeLog='./error_log.log';
 
     public function __construct($message,$filename,$line,$vars)
     {
@@ -50,18 +51,21 @@ class MyErrorHandler
 
     public function dealWarning()
     {
-        $errorMsg="error\n file ".$this->filename."\n message ".$this->message."\n line ".$this->line."\n";
+        $datetime=date("Y-m-d H:i:s",time());
+        $errorMsg="error\n file ".$this->filename."\n message ".$this->message."\n line ".$this->line."\n time ".$datetime."\n";
         ini_set('error_log','./error_log.log');
         echo $errorMsg;
-        //error_log($errorMsg);
+        error_log($errorMsg,3,$this->_noticeLog);
     }
     
     public function dealNotice()
     {
-        $errorMsg="error\n file ".$this->filename."\n message ".$this->message."\n line ".$this->line."\n";
+        $datetime=date("Y-m-d H:i:s",time());
+        $errorMsg="error\n file ".$this->filename."\n message ".$this->message."\n line ".$this->line."\n time ".$datetime."\n";
         ini_set('error_log','./error_log.log');
         echo $errorMsg;
-        //error_log($errorMsg);
+        error_log($errorMsg,3,$this->_noticeLog);
+        
     }
 
 }
