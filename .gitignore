@@ -1,0 +1,10 @@
+
+error/testError.txt
+
+error/error_log.log
+
+files/index_cron_cache.txt
+
+files/index_test_cache1-1.txt
+
+*.swp
